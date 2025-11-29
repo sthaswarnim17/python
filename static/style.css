@@ -184,3 +184,42 @@ textarea.form-control {
     background-color: #212529;
     border-color: #212529;
 }
+
+/* Authentication Pages Styling */
+.input-group-text {
+    background-color: #212529;
+    color: white;
+    border-color: #212529;
+}
+
+.input-group .form-control {
+    border-left: none;
+}
+
+.input-group .form-control:focus {
+    border-color: #495057;
+}
+
+/* Login/Register Cards */
+.shadow-lg {
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2) !important;
+}
+
+/* User Info in Navbar */
+.navbar-text {
+    font-weight: 500;
+}
+
+.navbar-text .bi {
+    font-size: 1.2rem;
+}
+
+/* Logout Button */
+.btn-outline-light {
+    transition: all 0.2s;
+}
+
+.btn-outline-light:hover {
+    background-color: white;
+    color: #212529;
+}
