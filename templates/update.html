@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+{% block body %}
+
+<div class="container my-3">
+    <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0"><i class="bi bi-pencil-square"></i> Update Todo</h5>
+        </div>
+        <div class="card-body">
+            <form action="/update/{{todo.sno}}" method="POST">
+                <div class="mb-3">
+                    <label for="title" class="form-label">ToDo Title <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="title" id="title" 
+                           value="{{todo.title}}" required maxlength="200" placeholder="Enter todo title">
+                    <div class="form-text">Maximum 200 characters</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="desc" class="form-label">ToDo Description <span class="text-danger">*</span></label>
+                    <textarea class="form-control" name="desc" id="desc" rows="3" 
+                              required maxlength="500" placeholder="Enter todo description">{{todo.desc}}</textarea>
+                    <div class="form-text">Maximum 500 characters</div>
+                </div>
+
+                <button type="submit" class="btn btn-dark">
+                    <i class="bi bi-check-lg"></i> Update Todo
+                </button>
+                <a href="/" class="btn btn-secondary">
+                    <i class="bi bi-x-lg"></i> Cancel
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+
+   
+
+{% endblock body %}

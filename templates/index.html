@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+{% block body %}
+
+<div class="container my-3">
+    <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0"><i class="bi bi-plus-circle"></i> Add New Todo</h5>
+        </div>
+        <div class="card-body">
+            <form action="/" method="POST" id="todoForm">
+                <div class="mb-3">
+                    <label for="title" class="form-label">ToDo Title <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="title" id="title" 
+                           required maxlength="200" placeholder="Enter todo title">
+                    <div class="form-text">Maximum 200 characters</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="desc" class="form-label">ToDo Description <span class="text-danger">*</span></label>
+                    <textarea class="form-control" name="desc" id="desc" rows="3" 
+                              required maxlength="500" placeholder="Enter todo description"></textarea>
+                    <div class="form-text">Maximum 500 characters</div>
+                </div>
+
+                <button type="submit" class="btn btn-dark">
+                    <i class="bi bi-plus-lg"></i> Add Todo
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container my-3">
+    <h2>Your Todos</h2>
+
+    {% if allTodo|length == 0 %}
+        <div class="alert alert-dark">
+            No Todos found. Add one.
+        </div>
+    {% else %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>SNo</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for todo in allTodo %}
+                <tr>
+                    <th>{{ loop.index }}</th>
+                    <td>{{ todo.title }}</td>
+                    <td>{{ todo.desc }}</td>
+                    <td>{{ todo.date_created }}</td>
+                    <td>
+                        <a href="/update/{{ todo.sno }}" class="btn btn-outline-dark btn-sm mx-1">
+                            <i class="bi bi-pencil"></i> Update
+                        </a>
+                        <a href="/delete/{{ todo.sno }}" class="btn btn-outline-danger btn-sm mx-1" 
+                           onclick="return confirm('Are you sure you want to delete this todo?');">
+                            <i class="bi bi-trash"></i> Delete
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+
+{% endblock body %}
